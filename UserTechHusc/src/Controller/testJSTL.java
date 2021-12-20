@@ -1,0 +1,76 @@
+package Controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import bean.Order;
+
+import bo.OrderBo;
+
+
+/**
+ * Servlet implementation class testJSTL
+ */
+@WebServlet("/testJSTL")
+public class testJSTL extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public testJSTL() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		try {
+//			response.setCharacterEncoding("utf-8");
+//			request.setCharacterEncoding("utf-8");
+//			PurchaseHistoryBo lbo = new PurchaseHistoryBo();
+//			ArrayList<PurchaseHistory> dsloai = lbo.getloai("bao1234");
+//			request.setAttribute("dsloai", dsloai);
+//			RequestDispatcher dss = request.getRequestDispatcher("dsLoai.jsp");
+//			dss.forward(request, response);
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+
+
+		try {
+			response.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("utf-8");
+			OrderBo lbo = new OrderBo();
+			ArrayList<Order> dsloai1 = lbo.getloai();
+			request.setAttribute("dsloai1", dsloai1);
+			RequestDispatcher dss = request.getRequestDispatcher("order.jsp");
+			dss.forward(request, response);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
